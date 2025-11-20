@@ -31,6 +31,9 @@ Normalized scores represent performance relative to human baselines, with scores
 
 ### GPU Kernel Performance
 
+Please refer to the original benchmarks for the exact baseline and environment details (https://github.com/SakanaAI/robust-kbench), which contains these details on the environment setup. We used the standard setting of Robust-KBench exactly with no additional modifications, which has specific settings for GPU type, PT version, input shapes, and timing code.
+
+
 Speedups achieved on specific GPU kernel implementations (relative to PyTorch eager mode, H100):
 
 | Kernel Type                              | Reported Speedup |
