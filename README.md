@@ -34,15 +34,13 @@ Normalized scores represent performance relative to human baselines, with scores
 Please refer to the original benchmarks for the exact baseline and environment details (https://github.com/SakanaAI/robust-kbench), which contains these details on the environment setup. We used the standard setting of Robust-KBench exactly with no additional modifications, which has specific settings for GPU type, PT version, input shapes, and timing code.
 
 
-Speedups achieved on specific GPU kernel implementations (relative to PyTorch eager mode, H100):
+Speedups achieved on specific input configurations (relative to PyTorch eager mode, H100). Kernels are not expected to be equally performant across untested input configurations:
 
-| Kernel Type                              | Reported Speedup |
-|------------------------------------------|------------------|
-| LayerNorm                                | ~138x / ~149x    |
-| llama_ffw (Llama Feedforward)            | ~12.2x - 20x     |
+| Kernel Type                              | Reported Speedup | Input Configuration (from Robust-KBench)|
+|------------------------------------------|------------------|---------------------|
+| LayerNorm                                | ~138x / ~149x    |  [1, 64, 256, 256]  |
+| llama_ffw (Llama Feedforward)            | ~12.2x - 20x     | Input x: [2, 128, 4096]<br>Weight gate_proj: [14336, 4096]<br>Weight up_proj: [14336, 4096]<br>Weight down_proj: [4096, 14336] |
+
 
 Note: Performance metrics may vary based on hardware configuration, input characteristics, and evaluation methodology. Implementations are often highly specialized for particular problem instances and may not generalize beyond the tested configurations.
-
-
-**Intology**
 
